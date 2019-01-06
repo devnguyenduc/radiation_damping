@@ -18,54 +18,64 @@
 <div class="col-xl-6">
    <div id="potential" class="collapse">
 	<button class="btn btn-outline-danger mb-1" data-toggle="collapse" data-target="#scalar_65">Scalar Potential (Thế vô hướng):</button>
-	<div lang="latex">
+	<div class="btn" lang="latex">
 		\phi = \int \frac{1}{R} \rho_{t - \frac{R}{c}} dV
 	</div>
 
-	<div class="">Khai triển số hạng bậc 3 trong 1/c </div>
-	<div lang="latex">
+	<button class="btn btn-outline-danger" data-toggle="collapse" data-target="#term_in_third">Khai triển số hạng bậc 3 trong 1/c </button>
+	<div class="btn" lang="latex">
 		\phi^{(3)} = - \frac{1}{6c^3} \frac{\partial^{3}}{\partial t} \int R^3 \rho dV
 	</div>
 
-	<div class="">Tương tự ta khai triển theo số hạng bậc 2 của thế Vector A:</div>
-	<div lang="latex">
-		\textbf{A}^{(2)} = -\frac{1}{c^2} \frac{\partial}{\partial t} \int \textbf{j} dV
+	<button class="btn btn-outline-danger"data-toggle="collapse" data-target="#vector_in_second">Tương tự ta khai triển theo số hạng bậc 2 của thế Vector A:</button>
+	<div class="btn">
+		<span lang="latex">\textbf{A}^{(2)} = -\frac{1}{c^2} \frac{\partial}{\partial t} \int \textbf{j} dV</span>
+		với <span lang="latex"> j = \rho v </span>
 	</div>
-	<div> với <span lang="latex"> j = \rho v </span> </div>
 
-	<div>Ta làm một phép biến đổi cho các thế: </div>
-	<div>
-		<span lang="latex">\phi' = \phi - \frac{1}{c} \frac{\partial f}{\partial t} </span>
-		,<span lang="latex">\textbf{A}' = \textbf{A} + grad f</span>
+	<button class="btn btn-outline-danger"data-toggle="modal" data-target="#gauge">Sử dụng bất biến Gauge: </button>
+	<div class="modal" id="gauge">
+	    <div class="modal-dialog">
+      	    <div class="modal-content">
+		<div class="modal-header">
+          		<h4 class="modal-title">Gauge invariance</h4>
+		</div>
+		<div class="modal-body btn">
+			<span lang="latex">\phi' = \phi - \frac{1}{c} \frac{\partial f}{\partial t} </span>
+			,<span lang="latex">\textbf{A}' = \textbf{A} + grad f</span>
+		</div>
+	    </div>
+            </div>
 	</div>
 
 	<div> Chọn hàm f sao cho thế vô hướng <span lang="latex">\phi'^3</span> bằng 0</div>
-
-	<div lang="latex">
+	<div class="btn" lang="latex">
 		f = - \frac{1}{6 c^2} \frac{\partial}{\partial t} \int R^2 \rho dV .
 	</div>
 
-	<div> Từ đó ta có một thế vector mới như sau </div>
-
-	<div lang="latex">
+	<div>Biến đổi thế vector sau khi dời khoảng bất biến gauge: </div>
+	<div class="btn" lang="latex">
 		\textbf{A} '^{(2)} = -\frac{1}{c^2} \frac{\partial}{\partial t} \int \textbf{j} dV - \frac{1}{6 c^2} \frac{\partial^2}{\partial t^2} \nabla \int R^2 \rho dV
 	</div>
-	<div class="ml-5" lang="latex">
+	<div class="btn" lang="latex">
 		= -\frac{1}{c^2} \frac{\partial}{\partial t} \int \textbf{j} dV - \frac{1}{3 c^3} \frac{\partial^2}{\partial t^2} \int \textbf{R} \rho dV
 	</div>
   
-	<div> Thay tích phân thành tổng các điện tích ta có vế thứ nhất phương trình:</div>
+	<div> Thay tích phân thành tổng các điện tích ta có số hạng đầu của phương trình như sau:</div>
 
-	<div lang="latex">
+	<div class="btn" lang="latex">
 		\frac{1}{c^2} \sum{ }_{ } e \dot{\textbf{v}} .
 	</div>
 
 	<div> Ở số hạng thứ 2 ta viết lại <span lang="latex"> \textbf{R} = \textbf{Ro} - \textbf{r}.</span> với <strong>Ro</strong> và <strong>r</strong> được định nghĩa trong bài 66; Khi đó <span lang="latex"> \dot{\textbf{R}} = -\dot{\textbf{r}} = -\textbf{v} </span> số hạng thứ 2 có dạng sau:</div>
 
-	<div lang="latex"> -\frac{1}{3 c^2} \sum{ }_{ } e \dot{\textbf{v}}</div>
+	<div class="btn" lang="latex"> -\frac{1}{3 c^2} \sum{ }_{ } e \dot{\textbf{v}}</div>
 
-	<div> Từ đây ta có:</div>
-	<div lang="latex"> \textbf{A}'^{(2)} = - \frac{2}{3 c^2} \sum{ }_{ } e \dot{\textbf{v}}.</div>
+	<div> Từ đây ta có thế vector sau khi biến đổi:</div>
+	
+	<button class="btn btn-light" data-toggle="collapse" data-target="#save1">
+		<div lang="latex"> \textbf{A}'^{(2)} = - \frac{2}{3 c^2} \sum{ }_{ } e \dot{\textbf{v}}.</div> 
+	</button>
   </div>
   <!-- Từ đây là khảo sát trường điện từ áp vào thế vector trên để tìm ra bức xạ damping -->
   <div id="force_simple" class="collapse">
