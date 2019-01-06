@@ -1,0 +1,139 @@
+<!doctype html>
+<head>
+	<title>Radiation Damping</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+	<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+<div class="container-fluid">
+<div class="row">
+<div class="col-xl-3">
+	<button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#potential">1.1 Khai triển các thế</button>
+
+	<button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#force_simple">1.2 Bức xạ Damping</button>
+
+	<button class="btn btn-primary mb-3" data-toggle="collapse" data-target="#force_damping">1.3 Khai triển lực damping</button>
+</div>
+<div class="col-xl-6">
+   <div id="potential" class="collapse">
+	<button class="btn btn-outline-danger mb-1" data-toggle="collapse" data-target="#scalar_65">Scalar Potential (Thế vô hướng):</div>
+	<div lang="latex">
+		\phi = \int \frac{1}{R} \rho_{t - \frac{R}{c}} dV
+	</div>
+
+	<div class="">Khai triển số hạng bậc 3 trong 1/c </div>
+	<div lang="latex">
+		\phi^{(3)} = - \frac{1}{6c^3} \frac{\partial^{3}}{\partial t} \int R^3 \rho dV
+	</div>
+
+	<div class="">Tương tự ta khai triển theo số hạng bậc 2 của thế Vector A:</div>
+	<div lang="latex">
+		\textbf{A}^{(2)} = -\frac{1}{c^2} \frac{\partial}{\partial t} \int \textbf{j} dV
+	</div>
+	<div> với <span lang="latex"> j = \rho v </span> </div>
+
+	<div> Ta làm một phép biến đổi cho các thế: </div>
+
+	<div>
+		<span lang="latex">\phi' = \phi - \frac{1}{c} \frac{\partial f}{\partial t} </span>
+		,<span lang="latex">\textbf{A}' = \textbf{A} + grad f</span>
+	</div>
+
+	<div> Chọn hàm f sao cho thế vô hướng <span lang="latex">\phi'^3</span> bằng 0</div>
+
+	<div lang="latex">
+		f = - \frac{1}{6 c^2} \frac{\partial}{\partial t} \int R^2 \rho dV .
+	</div>
+
+	<div> Từ đó ta có một thế vector mới như sau </div>
+
+	<div lang="latex">
+		\textbf{A} '^{(2)} = -\frac{1}{c^2} \frac{\partial}{\partial t} \int \textbf{j} dV - \frac{1}{6 c^2} \frac{\partial^2}{\partial t^2} \nabla \int R^2 \rho dV
+	</div>
+	<div class="ml-5" lang="latex">
+		= -\frac{1}{c^2} \frac{\partial}{\partial t} \int \textbf{j} dV - \frac{1}{3 c^3} \frac{\partial^2}{\partial t^2} \int \textbf{R} \rho dV
+	</div>
+  
+	<div> Thay tích phân thành tổng các điện tích ta có vế thứ nhất phương trình:</div>
+
+	<div lang="latex">
+		\frac{1}{c^2} \sum{ }_{ } e \dot{\textbf{v}} .
+	</div>
+
+	<div> Ở số hạng thứ 2 ta viết lại <span lang="latex"> \textbf{R} = \textbf{Ro} - \textbf{r}.</span> với <strong>Ro</strong> và <strong>r</strong> được định nghĩa trong bài 66; Khi đó <span lang="latex"> \dot{\textbf{R}} = -\dot{\textbf{r}} = -\textbf{v} </span> số hạng thứ 2 có dạng sau:</div>
+
+	<div lang="latex"> -\frac{1}{3 c^2} \sum{ }_{ } e \dot{\textbf{v}}</div>
+
+	<div> Từ đây ta có:</div>
+	<div lang="latex"> \textbf{A}'^{(2)} = - \frac{2}{3 c^2} \sum{ }_{ } e \dot{\textbf{v}}.</div>
+  </div>
+  <!-- Từ đây là khảo sát trường điện từ áp vào thế vector trên để tìm ra bức xạ damping -->
+  <div id="force_simple" class="collapse">
+	<!-- Khao sat dien tu truong voi the A'{2}  -->
+	<div> Từ trường trong thế này = 0 <span lang="latex">(\textbf{H} = curl \textbf{A}'^{(2)} = 0)</span>
+	</div>
+
+	<div>Điện trường <strong>E</strong> = -(1/c) <strong>A</strong>'(2) trở thành:</div>
+	<div lang="latex"> \textbf{E} = \frac{2}{3 c^3} \dddot{\textbf{d}}</div>
+
+	<div>Lực gây ra bởi từng điện tích e là <strong>f</strong> = e<strong>E</strong>:</div>
+	<div lang="latex"> \textbf{f} = \frac{2e}{3 c^3} \dddot{\textbf{d}} </div>
+
+	<div>Tổng công từng phần gây ra theo thời gian là tổng của <strong>f.v</strong></div>
+	<div lang="latex">
+		\sum{ }_{ } \textbf{f.v} = \frac{2}{3 c^3} \dddot{\textbf{d}} . \sum{ }_{ } e \textbf{v}
+		= \frac{2}{3 c^3} \dddot{\textbf{d}} . \dot{\textbf{d}}
+		= \frac{2}{3 c^3} [ \frac{d}{dt} (\dot{\textbf{d}}.\ddot{\textbf{d}})-( \ddot{\textbf{d}})^2 ]
+	</div>
+
+	<div>Khi ta lấy trung bình qua thời gian, số hạng thứ nhất biến mất, còn lại:</div>
+	<div lang="latex">\overline{\sum{ }_{ } \textbf{f.v}} = -\overline{\frac{2}{3 c^3} \ddot{\textbf{d}}} </div>
+
+	<div>Ta gọi lực f sinh ra công này là là Bức xạ Damping hay còn gọi là Lực Ma sát Lorentz</div>
+  
+	<div>Tạm thời bỏ qua kí hiệu trung bình ta xét tiếp Moment quán tính M của lực này, lấy đạo hàm theo thời gian cho Moment quán tính M </div>
+	<div lang="latex">
+		\dot{\textbf{M}} = \sum{ }_{ }\textbf{r x f} = \frac{2}{3 c^3} \sum{ }_{ }e\textbf{r}\times \dddot{\textbf{d}} = \frac{2}{3 c^3} \textbf{d} \times \dddot{\textbf{d}}.
+	</div>
+
+	<div>Tiếp túc phép tính trung bình thời gian ta viết lại Moment quán tính M như sau:</div>
+	<div lang="latex">
+		\overline{\frac{d\textbf{M}}{dt}} = -\frac{2}{3 c^3}\overline{\dot{\textbf{d}}\times \ddot{\textbf{d}}}
+	</div>
+  
+  
+	<!-- Công thức 75.8 -->
+	<div lang="latex">
+		\textbf{f} = \frac{2 e^2}{3 c^3} \ddot{\textbf{v}}
+	</div>
+  </div>
+  <div id="force_damping" class="collapse">
+	<!-- Công thức 75.9 -->
+	<div lang="latex">
+		m \dot{\textbf{v}} = e\textbf{E} + \frac{e}{c} \textbf{v} \times \textbf{H} +\frac{2 e^2}{3 c^3} \ddot{\textbf{v}}
+	</div>
+
+	<div lang="latex">
+		\ddot{\textbf{v}} = \frac{e}{m} \dot{\textbf{E}} + \frac{e}{mc} \dot{\textbf{v}} \times \textbf{H}
+	</div>
+
+	<div>Voi <span lang="latex">\dot{\textbf{v}} = (e/m)\textbf{E}</span>
+
+	<div>Điều đó tương đương với phương trình lực damping bao gồm 2 số hạng</div>
+	
+	<div lang="latex">\textbf{f} = \frac{2 e^3}{3 mc^3} \dot{\textbf{E}} + \frac{2 e^4}{3 m^2 c^4} \bf{E \times H}</div>
+	
+	<div>Nếu <span lang="latex">\omega</span> là tần số của chuyển động, Thì <span lang="latex"> \dot{\textbf{E}} \Leftrightarrow \omega\textbf{E}</span>Phương trình trở thành:</div>
+	<div lang="latex">
+		
+	</div> 
+  </div>
+</div>
+</div>
+</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
